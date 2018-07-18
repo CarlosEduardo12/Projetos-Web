@@ -19,35 +19,36 @@
 
       @foreach( $test as $e )
     	 <tr>
-          @foreach( $user as $u )
+        @foreach( $user as $u )
           @if ($u->id == $e->user_id)
           <td>{{ $u->name }}</td>
           @endif
-  	  @endforeach
+  	    @endforeach
       		<td>{{ $e->id}}</td>
           <td>{{ $e->date}}</td>
-
           <td>
                 <form method="post" onsubmit="return confirm('Confirma exclusão do Procedimento?');" action="{{ route('test.destroy','$test->id')}}">
               @csrf
               @method('DELETE')
               <input class="btn btn-danger" type="submit" value="Excluir">
-            </form></td>
+            </form>
+
+          </td>
         </tr>
       @endforeach
       </tbody>
       <tfoot>
 			<tr>
-				<td colspan="1">Quantidade de Exames</td>
+				<td colspan="1"><b>Quantidade de Exames</b></td>
 				<td>{{$total}}</td>
-        <td colspan="1">Total em R$</td>
+        <td colspan="1"><b>Total em R$</b></td>
 				<td>R${{ $valortotal }}</td>
 			</tr>
 		</tfoot>
     </table>
 
     @if ( Auth::check() )
-     <a class="btn btn-primary "href="{{ route('test.create') }}">Cadastrar Exames</a>
+     <a class="btn btn-primary "href="{{route('test.create')}}">Cadastrar Exames</a>
     @else
      <a class="btn btn-primary" onclick="funcao1()" value="Exibir Alert">Cadastrar Exames</a>
     @endif

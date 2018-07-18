@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Procedure;
+use App\procedure;
 use App\Test;
 use App\user;
 use Auth;
+
 
 class TestsController extends Controller
 {
@@ -78,9 +79,11 @@ class TestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Test $id)
     {
-        //
+      $tests= Test::orderBy('user_id')->get();
+    return view('testes.listar')
+    ->with('tests',$tests);
     }
 
     /**
@@ -90,9 +93,11 @@ class TestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+    $test->save();
+    session()->flash('mensagem', 'Exame atualizado com sucesso!');
+    return redirect()->route('testes.listar',$test->id);
     }
 
     /**
@@ -101,9 +106,11 @@ class TestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Test $test_id)
+    public function destroy($id)
     {
-      $test_id->delete();
+
+      $achar = Test::findOrFail($id);
+      $achar->delete();
       session()->flash('mensagem','Exame excluido com sucesso');
       return redirect()->route('test.index');    }
 }
