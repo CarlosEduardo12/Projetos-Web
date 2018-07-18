@@ -109,8 +109,8 @@ class TestsController extends Controller
     public function destroy(Test $test)
     {
 
-      $test = Test::find($id); 
+      $test = Test::find($id);
       $test->delete();
       session()->flash('mensagem','Exame excluido com sucesso');
-      return view('testes.listar');    }
+      return redirect()->route('test.index');    }
 }
