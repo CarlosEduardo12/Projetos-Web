@@ -27,7 +27,7 @@
       		<td>{{ $e->id}}</td>
           <td>{{ $e->date}}</td>
           <td>
-                <form method="post" onsubmit="return confirm('Confirma exclusão do Procedimento?');" action="{{ route('test.destroy','$test->id')}}">
+                <form method="post" onsubmit="return confirm('Confirma exclusão do Procedimento?');" action="{{ route('test.destroy','$e')}}">
               @csrf
               @method('DELETE')
               <input class="btn btn-danger" type="submit" value="Excluir">
