@@ -3,12 +3,13 @@
 @section('conteudo')
 
 
-    @csrf
+
 
 <div class="col-sm-3"></div>
 
 <div class="col-sm-6 jumbotron">
   <form method="post" action="{{ route('test.store') }}">
+    @csrf
     <h2>Cadastrar Exame</h2>
     <div class="col-sm-3">
       <label for="user_id">ID do Usuário: </label><br><br>

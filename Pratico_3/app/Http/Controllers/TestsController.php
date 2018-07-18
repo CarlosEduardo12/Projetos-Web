@@ -106,11 +106,11 @@ class TestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Test $id)
     {
 
-      $achar = Test::findOrFail($id);
-      $achar->delete();
+
+      $id->delete();
       session()->flash('mensagem','Exame excluido com sucesso');
       return redirect()->route('test.index');    }
 }
