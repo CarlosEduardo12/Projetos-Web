@@ -19,16 +19,16 @@ class TestsController extends Controller
     public function index()
     {
       $user = user::get();
-
+      $procedure = procedure::get();
       $testes = Test::where('user_id', '=', Auth::user()->id)->orderBy('date','desc')->get();
       $total = Test::where('user_id', '=', Auth::user()->id)->count();
       $valortotal = Test::join('procedures', 'tests.procedure_id', '=', 'procedures.id')
       ->where('tests.user_id', '=', Auth::user()->id)->sum('procedures.price');
       return view('testes.listar')
+      ->with('procedure', $procedure)
       ->with('test', $testes)
       ->with('total', $total)
       ->with('user', $user)
-
       ->with('valortotal', $valortotal);
     }
 
@@ -109,7 +109,7 @@ class TestsController extends Controller
     public function destroy(Test $test)
     {
 
-      
+
       $test->delete();
       session()->flash('mensagem','Exame excluido com sucesso');
       return redirect()->route('test.index');    }

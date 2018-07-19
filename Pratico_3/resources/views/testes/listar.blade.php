@@ -13,6 +13,7 @@
           <th>Usuário</th>
           <th>Cod Exame</th>
           <th>Data</th>
+          <th>Preço</th>
           <th>Ações</th>
         </tr>
       </thead>
@@ -26,6 +27,11 @@
   	    @endforeach
       		<td>{{ $e->id}}</td>
           <td>{{ $e->date}}</td>
+          @foreach ($procedure as $u)
+          @if ($u->id == $e->procedure_id)
+          <td>{{ $u->price }}</td>
+          @endif
+          @endforeach
           <td>
                 <form method="post" onsubmit="return confirm('Confirma exclusão do Procedimento?');" action="{{ route('test.destroy',[$e->id])}}">
               @csrf
