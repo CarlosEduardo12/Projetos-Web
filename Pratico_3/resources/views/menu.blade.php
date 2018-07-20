@@ -64,7 +64,7 @@
 							<div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
 								<div class="header-btns-icon">
 									<i class="fa fa-user-o"></i>
-              
+
 								</div>
 								<strong class="text-uppercase"> @if ( Auth::check() )Conta do {{Auth::user()->name}}
                   @else Deslogado @endif <i class="fa fa-caret-down"></i></strong>
@@ -145,6 +145,7 @@
 
     }
     </script>
+    
 
     @yield('conteudo')
 

@@ -93,11 +93,11 @@ class TestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Test $test)
     {
     $test->save();
     session()->flash('mensagem', 'Exame atualizado com sucesso!');
-    return redirect()->route('testes.listar',$test->id);
+    return redirect()->route('test.index');
     }
 
     /**
