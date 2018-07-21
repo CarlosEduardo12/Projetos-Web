@@ -81,9 +81,7 @@ class TestsController extends Controller
      */
     public function edit(Test $id)
     {
-      $tests= Test::orderBy('user_id')->get();
-    return view('testes.listar')
-    ->with('tests',$tests);
+    
     }
 
     /**
@@ -93,11 +91,12 @@ class TestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Test $test)
+    public function update(Request $request,Test $test)
     {
-    $test->save();
-    session()->flash('mensagem', 'Exame atualizado com sucesso!');
-    return redirect()->route('test.index');
+      $test->fill($request->all());
+      $test->save();
+      $request->session()->flash('mensagem', 'Exame atualizado com sucesso!');
+      return redirect()->route('test.index');
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\procedure;
+use Auth; 
 class ProceduresController extends Controller
 {
     /**
@@ -14,7 +15,12 @@ class ProceduresController extends Controller
     public function index()
     {
         $procedure = procedure:: orderBy('name')->get();
-        return view('geral.listar')->with('procedure',$procedure);
+        if (Auth::check()) {
+           return view('proce.adm')->with('procedure',$procedure);
+        }
+        else {
+          return view('geral.listar')->with('procedure',$procedure);        }
+
     }
 
     /**
@@ -47,9 +53,8 @@ class ProceduresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( $id)
     {
-        //
     }
 
     /**

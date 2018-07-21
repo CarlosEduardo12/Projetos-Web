@@ -112,7 +112,7 @@
                  @endif
               </ul>
            </li>
-           <li><a href='#'><span>Administradores</span></a></li>
+           <li><a href="{{route('procedure.index')}}"><span>Administradores</span></a></li>
 
         </ul>
         </div>
@@ -145,7 +145,7 @@
 
     }
     </script>
-    
+
 
     @yield('conteudo')
 
