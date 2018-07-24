@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\procedure;
-use Auth; 
+use Auth;
 class ProceduresController extends Controller
 {
     /**
@@ -75,9 +75,12 @@ class ProceduresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, procedure $procedure)
     {
-        //
+      $procedure->fill($request->all());
+      $procedure->save();
+      $request->session()->flash('mensagem', 'Exame atualizado com sucesso!');
+      return redirect()->route('procedure.index');
     }
 
     /**
@@ -86,8 +89,10 @@ class ProceduresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(procedure $procedure)
     {
-        //
+      $procedure->delete();
+      session()->flash('mensagem','Exame excluido com sucesso');
+      return redirect()->route('test.index');
     }
 }

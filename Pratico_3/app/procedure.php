@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class procedure extends Model
 {
-  protected $fillable = [ 'id', 'name', 'price', 'user_id', ];
+  protected $fillable = [ 'id', 'name', 'price', 'user_id'];
 
 }
