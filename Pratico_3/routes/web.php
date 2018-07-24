@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-$app->get('/cowsay', function() use($app) {
-  $app['monolog']->addDebug('cowsay');
-  return "<pre>".\Cowsayphp\Cow::say("Cool beans")."</pre>";
-});
 Route::resource('/procedure', 'ProceduresController');
 Route::resource('/test', 'TestsController');
 
