@@ -62,7 +62,11 @@
      <a class="btn btn-primary" onclick="funcao1()" value="Exibir Alert">Editar Exame</a>
     @endif
   </div>
-
+  @if(Session::has('message'))
+    <div class="alert alert-success">
+      {{Session::get('message')}}
+    </div>
+  @endif
   <!-- The Modal --> <!-- https://www.w3schools.com/howto/howto_css_modals.asp -->
   <div id="myModal" class="modal">
 
